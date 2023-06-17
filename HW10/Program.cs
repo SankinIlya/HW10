@@ -6,17 +6,20 @@
         {
             Repository rep = new Repository("Consultant.txt");
             rep.Load();
-            Consultant con = new Consultant();
-            Console.WriteLine("1 - Зайти под конультантом;\n2 - зайти под менеджером.");
-            int choose = int.Parse(Console.ReadLine());
+            Consultant con;
+            Menu menu = new Menu();
+
+            int choose = menu.ChooseEmployee();
+
             if (choose == 1)
             {
-                Console.WriteLine("Введите id пользователя для просмотра информации");
-                int id = int.Parse(Console.ReadLine());
+                con = new Consultant();
+                int id = menu.ChooseUserId();
                 User user = rep.FindId(id);
                 Console.WriteLine(con.Read(user).ToString());
                 Console.WriteLine("Изменить номер телефона?\n1 - Да;\n2 - Нет.");
                 int change = int.Parse(Console.ReadLine());
+
                 if(change == 1)
                 {
                     Console.Write("Введите новый номер:");
@@ -25,11 +28,13 @@
                     editedUser.Phone = newPhone;
                     con.Edit(user,editedUser);
                 }
+
                // Тест Тест
+
             }
-            else if(choose == 2) 
+            else 
             {
-                Consultant man = new Manager();
+                con = new Manager();
 
 
             }
