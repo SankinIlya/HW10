@@ -14,7 +14,6 @@ namespace HW10
             return user;
         }
 
-
         public override User Edit(User user, User editUser)
         {
             return user;

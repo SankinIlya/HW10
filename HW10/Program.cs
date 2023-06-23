@@ -8,6 +8,7 @@
             rep.Load();
             Consultant con;
             Menu menu = new Menu();
+            EditUser correct = new EditUser();
 
             int choose = menu.ChooseEmployee();
 
@@ -17,28 +18,54 @@
                 int id = menu.ChooseUserId();
                 User user = rep.FindId(id);
                 Console.WriteLine(con.Read(user).ToString());
-                Console.WriteLine("Изменить номер телефона?\n1 - Да;\n2 - Нет.");
-                int change = int.Parse(Console.ReadLine());
 
-                if(change == 1)
+                int change = menu.ChooseCorrect();
+
+                if (change == 5)
                 {
-                    Console.Write("Введите новый номер:");
-                    string newPhone = Console.ReadLine();
                     var editedUser = new User(user);
-                    editedUser.Phone = newPhone;
-                    con.Edit(user,editedUser);
+                    editedUser.Phone = correct.ChangePhone();
+                    con.Edit(user, editedUser);
                 }
-
-               // Тест Тест
-
+                else Console.WriteLine("Нет прав");
             }
-            else 
+            else
             {
                 con = new Manager();
+                int id = menu.ChooseUserId(); //дублирование 
+                User user = rep.FindId(id); //дублирование 
+                Console.WriteLine(con.Read(user).ToString()); //дублирование 
+
+                int change = menu.ChooseCorrect(); //дублирование 
+
+                User editUser = new User(user);
+
+                switch (change)
+                {
+                    case 1:
+                        editUser.FirstName = correct.ChangeFirstName();
+                        break;
+
+                    case 2:
+                        editUser.LastName = correct.ChangeLastName();
+                        break;
+
+                    case 3:
+                        editUser.Patronymic = correct.ChangePatronymic();
+                        break;
+
+                    case 4:
+                        editUser.Passport = correct.ChangePassport();
+                        break;
+
+                    case 5:
+                        editUser.Phone = correct.ChangePhone();
+                        break;
+                }
 
 
             }
-           
+
 
 
         }

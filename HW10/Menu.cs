@@ -31,9 +31,13 @@ namespace HW10
 
         public int ChooseCorrect()
         {
-            Console.WriteLine("Изменить номер телефона?\n1 - Да;\n2 - Нет.");
+            Console.WriteLine("1 - Изменить имя \n2 - Изменить фамилию \n3 - Изменить отчество \n4 - Изменить паспорт \n5 - Изменить телефон");
+            int result = int.Parse(Console.ReadLine());
+            return result;
+        }      
 
 
-        }
+
+
     }
 }

@@ -22,7 +22,7 @@ namespace HW10
             user = editUser;
             if(editUser.Phone == string.Empty) 
             {
-                //throw new Exception("Номер не введен");
+                throw new Exception("Номер не введен");
             }
             return editUser;
         }
