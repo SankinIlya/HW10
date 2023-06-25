@@ -8,29 +8,35 @@
             rep.Load();
             Consultant con;
             Menu menu = new Menu();
-            EditUser correct = new EditUser();
+            UserReader correct = new UserReader();
 
             int choose = menu.ChooseEmployee();
 
             if (choose == 1)
             {
-              con = new Consultant();
+                con = new Consultant();
             }
             else con = new Manager();
 
             int id = menu.ChooseUserId();
-            User user = rep.FindId(id);
-            Console.WriteLine(con.Read(user).ToString());
-
+            User user;            
             int change = menu.ChooseCorrect();
 
-            if (change == 5)
+            if (con is Consultant && (change != 5 && change != 6))
             {
-                var editedUser = new User(user);
-                editedUser.Phone = correct.ChangePhone();
-                con.Edit(user, editedUser);
+                Console.WriteLine("Нет прав"); 
+                return;
             }
-            else Console.WriteLine("Нет прав");
+
+            if(change == 6) 
+            {
+                for (int i = 0; i <rep.Users.Count; i++)
+                {
+                    user = rep.Users[i];
+                    Console.WriteLine(con.Read(user).ToString());
+                }
+                return;
+            }
 
 
             User editUser = new User(user);
@@ -56,6 +62,7 @@
                 case 5:
                     editUser.Phone = correct.ChangePhone();
                     break;
+
             }
 
 

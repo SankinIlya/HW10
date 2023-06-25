@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HW10
 {
-    public class EditUser
+    public class UserReader
     {
         public string ChangePhone()
         {

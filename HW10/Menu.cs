@@ -13,14 +13,7 @@ namespace HW10
             Console.WriteLine("1-Cons \n2-Man");
             int result = int.Parse(Console.ReadLine());
             return result;
-        }
-
-        public int ChooseMoves()
-        {
-            Console.WriteLine("1- показать всех клиентов \n2- найти клиента по id");
-            int result = int.Parse(Console.ReadLine());
-            return result;
-        }
+        }       
 
         public int ChooseUserId()
         {
@@ -31,7 +24,8 @@ namespace HW10
 
         public int ChooseCorrect()
         {
-            Console.WriteLine("1 - Изменить имя \n2 - Изменить фамилию \n3 - Изменить отчество \n4 - Изменить паспорт \n5 - Изменить телефон");
+            Console.WriteLine("1 - Изменить имя \n2 - Изменить фамилию \n3 - Изменить отчество \n" +
+                "4 - Изменить паспорт \n5 - Изменить телефон \n6 - Показать всех клиентов");
             int result = int.Parse(Console.ReadLine());
             return result;
         }      
