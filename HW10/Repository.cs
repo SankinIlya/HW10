@@ -45,11 +45,17 @@ namespace HW10
         {
             using (StreamWriter sw = new StreamWriter(path)) 
             {
-
-
+                for (int i = 0; i < users.Count; i++)
+                {
+                    sw.WriteLine(string.Join(Separator, users[i]));
+                }
             }
-
         }
+
+        //public string PrintToSave()
+        //{
+        //    return string.Join(Separator,users);
+        //}
 
         public User FindId(int id) 
         {

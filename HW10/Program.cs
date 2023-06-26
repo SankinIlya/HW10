@@ -19,18 +19,18 @@
             else con = new Manager();
 
             int id = menu.ChooseUserId();
-            User user;            
+            User user = rep.FindId(id);
+            Console.WriteLine(con.Read(user).ToString());
             int change = menu.ChooseCorrect();
 
             if (con is Consultant && (change != 5 && change != 6))
             {
-                Console.WriteLine("Нет прав"); 
+                Console.WriteLine("Нет прав");
                 return;
             }
-
-            if(change == 6) 
+            else if (change == 6)
             {
-                for (int i = 0; i <rep.Users.Count; i++)
+                for (int i = 0; i < rep.Users.Count; i++)
                 {
                     user = rep.Users[i];
                     Console.WriteLine(con.Read(user).ToString());
@@ -38,11 +38,11 @@
                 return;
             }
 
-
             User editUser = new User(user);
 
             switch (change)
             {
+
                 case 1:
                     editUser.FirstName = correct.ChangeFirstName();
                     break;
@@ -62,9 +62,9 @@
                 case 5:
                     editUser.Phone = correct.ChangePhone();
                     break;
-
             }
 
+           
 
 
 
