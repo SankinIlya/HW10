@@ -47,15 +47,21 @@ namespace HW10
             {
                 for (int i = 0; i < users.Count; i++)
                 {
-                    sw.WriteLine(string.Join(Separator, users[i]));
+                    sw.WriteLine();
                 }
             }
         }
 
-        //public string PrintToSave()
-        //{
-        //    return string.Join(Separator,users);
-        //}
+        public void TransformString(User user)
+        {
+           string a = Convert.ToString(user);
+        }
+
+        public string PrintToSave()
+        {
+            return string.Join(,)
+
+        }
 
         public User FindId(int id) 
         {

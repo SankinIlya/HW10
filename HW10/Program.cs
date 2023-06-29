@@ -23,7 +23,7 @@
             Console.WriteLine(con.Read(user).ToString());
             int change = menu.ChooseCorrect();
 
-            if (con is Consultant && (change != 5 && change != 6))
+            if (con.GetType() == typeof(Consultant) && (change != 5 && change != 6))
             {
                 Console.WriteLine("Нет прав");
                 return;
