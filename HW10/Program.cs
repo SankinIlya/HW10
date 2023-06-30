@@ -6,6 +6,8 @@
         {
             Repository rep = new Repository("Consultant.txt");
             rep.Load();
+
+
             Consultant con;
             Menu menu = new Menu();
             UserReader correct = new UserReader();
@@ -62,9 +64,36 @@
                 case 5:
                     editUser.Phone = correct.ChangePhone();
                     break;
+                case 6:
+                    Console.WriteLine(con.Read(user).ToString);
+                    break;
             }
 
-           
+            bool result = con.TryEdit(user, editUser);
+
+            Console.WriteLine(result ?
+                "Успешно" : "Не успешно");
+
+            List<User> users = new List<User>(rep.Users);
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (editUser.Id == users[i].Id)
+                {
+                    users[i] = editUser;
+                    rep.Save(users);
+                }
+            }
+
+
+
+
+
+
+
+
+
+
 
 
 

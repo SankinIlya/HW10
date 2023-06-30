@@ -17,14 +17,14 @@ namespace HW10
             return newUser;
         }
 
-        public virtual User Edit(User user, User editUser)
+        public virtual bool TryEdit(User user, User editUser)
         {
             user = editUser;
             if(editUser.Phone == string.Empty) 
             {
-                throw new Exception("Номер не введен");
+                return false;
             }
-            return editUser;
+            return true;
         }
 
 

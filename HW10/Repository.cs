@@ -41,26 +41,35 @@ namespace HW10
             }
         }
 
-        public void Save() 
-        {
+        public void Save(List <User> users) 
+        {       
+
             using (StreamWriter sw = new StreamWriter(path)) 
             {
                 for (int i = 0; i < users.Count; i++)
                 {
-                    sw.WriteLine();
+                    sw.WriteLine(PrintToSave(users[i]));
                 }
             }
         }
 
-        public void TransformString(User user)
-        {
-           string a = Convert.ToString(user);
-        }
+        //public void Save2()
+        //{
+        //    StringBuilder sb = new StringBuilder();
 
-        public string PrintToSave()
-        {
-            return string.Join(,)
+          
+        //    for (int i = 0; i < users.Count; i++)
+        //    {
+        //        sb.AppendLine(PrintToSave(users[i]));
+              
+        //        //WriteLine(PrintToSave(users[i]));
+        //    }
+        //    File.WriteAllText(path, sb.ToString());
+        //}
 
+        public string PrintToSave(User user)
+        {
+            return string.Join(Separator, user.Id, user.LastName, user.FirstName, user.Patronymic, user.Phone, user.Passport);
         }
 
         public User FindId(int id) 
