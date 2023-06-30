@@ -18,6 +18,5 @@ namespace HW10
         {
             return true;
         }
-
     }
 }

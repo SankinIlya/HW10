@@ -15,8 +15,6 @@ namespace HW10
             return result;
         }       
 
-
-
         public int ChooseUserId()
         {
             Console.WriteLine("Введите id пользователя для просмотра информации");
@@ -31,9 +29,5 @@ namespace HW10
             int result = int.Parse(Console.ReadLine());
             return result;
         }      
-
-
-
-
     }
 }
