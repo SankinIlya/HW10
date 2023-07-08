@@ -16,6 +16,7 @@ namespace HW10
 
         public override bool TryEdit(User user, User editUser)
         {
+            user = editUser;
             return true;
         }
     }

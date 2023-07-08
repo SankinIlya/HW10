@@ -20,14 +20,22 @@ namespace HW10
         public virtual bool TryEdit(User user, User editUser)
         {
             user = editUser;
-            if(editUser.Phone == string.Empty) 
+            if (editUser.Phone == string.Empty)
             {
                 return false;
             }
             return true;
         }
 
-
+        public bool CheckInfo(User user, User editUser)
+        {
+            if (user.Id == editUser.Id && user.LastName == editUser.LastName && user.FirstName == editUser.FirstName 
+                && user.Patronymic == editUser.Patronymic && user.Passport == editUser.Passport)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
