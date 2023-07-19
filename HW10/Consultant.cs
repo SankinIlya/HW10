@@ -19,12 +19,17 @@ namespace HW10
 
         public virtual bool TryEdit(User user, User editUser)
         {
-            user = editUser;
-            if (editUser.Phone == string.Empty)
+            
+            if (CheckInfo(user, editUser) == true)
             {
-                return false;
+                user = editUser;
+                if (editUser.Phone == string.Empty)
+                {
+                    return false;
+                }
+                return true;
             }
-            return true;
+            else { return false; }
         }
 
         public bool CheckInfo(User user, User editUser)

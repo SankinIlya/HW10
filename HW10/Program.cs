@@ -20,8 +20,8 @@
             else con = new Manager();
 
             while (true)
-            {
-                int id = menu.ChooseUserId();
+            {                
+                int id = menu.ChooseUserId();                
                 User user = rep.FindId(id);
                 Console.WriteLine(con.Read(user).ToString());
                 int change = menu.ChooseCorrect();
@@ -75,16 +75,20 @@
                 Console.WriteLine(result ?
                     "Успешно" : "Не успешно");
 
-                List<User> users = new List<User>(rep.Users);
-
-                for (int i = 0; i < users.Count; i++)
+                if (result == true)
                 {
-                    if (editUser.Id == users[i].Id)
+                    List<User> users = new List<User>(rep.Users);
+
+                    for (int i = 0; i < users.Count; i++)
                     {
-                        users[i] = editUser;
-                        rep.Save(users);
+                        if (editUser.Id == users[i].Id)
+                        {
+                            users[i] = editUser;
+                            rep.Save(users);                            
+                        }
                     }
                 }
+                
 
             }
 
