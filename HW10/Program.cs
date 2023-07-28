@@ -75,7 +75,7 @@
                 Console.WriteLine(result ?
                     "Успешно" : "Не успешно");
 
-                if (result == true)
+                if (result)
                 {
                     List<User> users = new List<User>(rep.Users);
 
@@ -84,7 +84,8 @@
                         if (editUser.Id == users[i].Id)
                         {
                             users[i] = editUser;
-                            rep.Save(users);                            
+                            rep.Save(users);
+                            rep.Load();
                         }
                     }
                 }

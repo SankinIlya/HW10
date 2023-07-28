@@ -22,7 +22,7 @@ namespace HW10
             
             if (CheckInfo(user, editUser) == true)
             {
-                user = editUser;
+                
                 if (editUser.Phone == string.Empty)
                 {
                     return false;
@@ -30,9 +30,11 @@ namespace HW10
                 return true;
             }
             else { return false; }
+
+
         }
 
-        public bool CheckInfo(User user, User editUser)
+        protected virtual bool CheckInfo(User user, User editUser)
         {
             if (user.Id == editUser.Id && user.LastName == editUser.LastName && user.FirstName == editUser.FirstName 
                 && user.Patronymic == editUser.Patronymic && user.Passport == editUser.Passport)

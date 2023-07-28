@@ -29,8 +29,16 @@ namespace HW10
 
         public void Load()
         {
-            using(StreamReader sr = new StreamReader(path))
+            if (!File.Exists(path))
             {
+                //File.Create(path).Close();
+                FileStream file = File.Create(path);
+                file.Close();
+            }
+            
+            using (StreamReader sr = new StreamReader(path))
+            {
+                users.Clear();
                 string line;
                 while((line = sr.ReadLine()) != null) 
                 {

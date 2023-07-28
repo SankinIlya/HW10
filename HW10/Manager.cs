@@ -16,12 +16,18 @@ namespace HW10
 
         public override bool TryEdit(User user, User editUser)
         {
-            user = editUser;
+            
             if (editUser.Phone == string.Empty)
             {
                 return false;
             }
             return true;
+        }
+
+        protected override bool CheckInfo(User user, User editUser)
+        {
+            return true;
+
         }
     }
 }

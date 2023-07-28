@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <Compile Update="Consultant.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
