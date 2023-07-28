@@ -27,7 +27,6 @@ namespace HW10
         protected override bool CheckInfo(User user, User editUser)
         {
             return true;
-
         }
     }
 }

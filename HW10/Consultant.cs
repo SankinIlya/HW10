@@ -19,24 +19,21 @@ namespace HW10
 
         public virtual bool TryEdit(User user, User editUser)
         {
-            
-            if (CheckInfo(user, editUser) == true)
+            bool checkResult = editUser.Phone != string.Empty && CheckInfo(user, editUser);
+            if (checkResult && user.Phone != editUser.Phone)
             {
-                
-                if (editUser.Phone == string.Empty)
+                user.histories.Add(new History
                 {
-                    return false;
-                }
-                return true;
+                    WhatEdit = $"Телефон {user.Phone} поменялся на {editUser.Phone}",
+                    WhoEdit = "Консультант"
+                });
             }
-            else { return false; }
-
-
+            return checkResult;
         }
 
         protected virtual bool CheckInfo(User user, User editUser)
         {
-            if (user.Id == editUser.Id && user.LastName == editUser.LastName && user.FirstName == editUser.FirstName 
+            if (user.Id == editUser.Id && user.LastName == editUser.LastName && user.FirstName == editUser.FirstName
                 && user.Patronymic == editUser.Patronymic && user.Passport == editUser.Passport)
             {
                 return true;

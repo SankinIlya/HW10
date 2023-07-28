@@ -44,7 +44,12 @@ namespace HW10
                 {
                     string[] parts = line.Split(Separator);
                     int id = int.Parse(parts[0]);
-                    users.Add(new User(id, parts[1], parts[2], parts[3], parts[4], parts[5]));                    
+                    users.Add(new User(id, parts[1], parts[2], parts[3], parts[4], parts[5]));
+
+                    User curUser = new User(id, parts[1], parts[2], parts[3], parts[4], parts[5]);
+                    HistoryLoad(curUser);
+
+
                 }
             }
         }
@@ -57,6 +62,7 @@ namespace HW10
                 for (int i = 0; i < users.Count; i++)
                 {
                     sw.WriteLine(PrintToSave(users[i]));
+                    HistorySave(users[i]);
                 }
             }
         }
@@ -93,6 +99,34 @@ namespace HW10
             return null;
         }
 
+
+        protected void HistoryLoad(User user)
+        {
+            if (!File.Exists($"{user.Id}.txt")) 
+            {
+                return;
+            }
+            
+
+        }
+
+        protected void HistorySave(User user) 
+        {
+            using (StreamWriter sw = new StreamWriter($"{user.Id}.txt"))
+            {
+                for (int i = 0; i < user.histories.Count ; i++)
+                {
+                    sw.WriteLine(PrintToHistorySave(user.histories[i]));
+                }
+            }
+
+        }
+
+
+        protected string PrintToHistorySave(History history)
+        {
+            return string.Join(Separator, history.WhoEdit, history.WhatEdit, history.TimeEdit);
+        }
 
 
     }
