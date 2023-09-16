@@ -22,7 +22,7 @@ namespace HW10
             bool checkResult = editUser.Phone != string.Empty && CheckInfo(user, editUser);
             if (checkResult && user.Phone != editUser.Phone)
             {
-                user.histories.Add(new History
+                editUser.histories.Add(new History
                 {
                     WhatEdit = $"Телефон {user.Phone} поменялся на {editUser.Phone}",
                     WhoEdit = "Консультант"

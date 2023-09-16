@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Repository rep = new Repository("Consultant.txt");
+            Repository rep = new Repository("Consultant.txt"); 
             rep.Load();
 
             Consultant con;

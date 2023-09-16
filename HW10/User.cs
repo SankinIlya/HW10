@@ -37,15 +37,25 @@ namespace HW10
             LastName = other.LastName;
             Passport = other.Passport;
             Phone = other.Phone;
-           
+            histories = other.histories;
         }
 
         public override string ToString()
         {
-            return $"ID: {Id} Пользователь: {LastName} {FirstName} {Patronymic}\nТелефон: {Phone}\nСерия, номер пасспорта: {Passport}\n";
+            return $"ID: {Id} Пользователь: {LastName} {FirstName} {Patronymic}\nТелефон: {Phone}\nСерия, номер пасспорта: {Passport}\n" +
+                HistoryToString();
         }
 
+        public string HistoryToString()
+        {
+            StringBuilder sb = new StringBuilder();
 
+            for (int i = 0; i < histories.Count; i++)
+            {
+                sb.AppendLine(histories[i].ToString());
+            }
+            return sb.ToString();
+        }
 
 
     }

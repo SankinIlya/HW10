@@ -21,6 +21,11 @@ namespace HW10
             {
                 return false;
             }
+            editUser.histories.Add(new History
+            {
+                WhatEdit = $"Телефон {user.Phone} поменялся на {editUser.Phone}",
+                WhoEdit = "Менеджер"
+            });
             return true;
         }
 

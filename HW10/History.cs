@@ -25,5 +25,10 @@ namespace HW10
         {
 
         }
+
+        public override string ToString()
+        {
+            return $"Время изменения {TimeEdit}, Изменил {WhoEdit}, Изменение {WhatEdit}";
+        }
     }
 }
