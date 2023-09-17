@@ -10,7 +10,7 @@ namespace HW10
     {
         public string ChangePhone()
         {
-            Console.WriteLine("Введите новый телефон:");
+            Console.WriteLine("Введите телефон:");
             string newPhone = Console.ReadLine();
             return newPhone;
         }
@@ -43,5 +43,9 @@ namespace HW10
             return newPassport;
         }
 
+        public User AddNewUser()
+        {
+            new User()
+        }
     }
 }

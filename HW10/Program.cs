@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Repository rep = new Repository("Consultant.txt"); 
+            Repository rep = new Repository("Consultant.txt");
             rep.Load();
 
             Consultant con;
@@ -20,13 +20,13 @@
             else con = new Manager();
 
             while (true)
-            {                
-                int id = menu.ChooseUserId();                
+            {
+                int id = menu.ChooseUserId();
                 User user = rep.FindId(id);
                 Console.WriteLine(con.Read(user).ToString());
                 int change = menu.ChooseCorrect();
 
-                if (con.GetType() == typeof(Consultant) && (change != 5 && change != 6))
+                if (con.GetType() == typeof(Consultant) && (change != 5 && change != 6 && change != 7))
                 {
                     Console.WriteLine("Нет прав");
                     continue;
@@ -68,6 +68,12 @@
                     case 6:
                         Console.WriteLine(con.Read(user).ToString);
                         break;
+                    case 7:
+                        User newUser = new(rep.NewUserId(), correct.ChangeFirstName(), correct.ChangeLastName(), correct.ChangePatronymic(), correct.ChangePassport(), correct.ChangePassport());
+
+                       
+                            
+                        break;
                 }
 
                 bool result = con.TryEdit(user, editUser);
@@ -88,8 +94,8 @@
                             rep.Load();
                         }
                     }
-                }                              
-                
+                }
+
             }
 
 
