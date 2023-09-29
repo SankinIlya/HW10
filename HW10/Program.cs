@@ -1,4 +1,6 @@
-﻿namespace HW10
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HW10
 {
     internal class Program
     {
@@ -21,12 +23,10 @@
 
             while (true)
             {
-                int id = menu.ChooseUserId();
-                User user = rep.FindId(id);
-                Console.WriteLine(con.Read(user).ToString());
-                int change = menu.ChooseCorrect();
+                int change = menu.ChooseCorrect();               
 
-                if (con.GetType() == typeof(Consultant) && (change != 5 && change != 6 && change != 7))
+
+                if (con.GetType() == typeof(Consultant) && (change != 5 && change != 6 && change == 7))
                 {
                     Console.WriteLine("Нет прав");
                     continue;
@@ -35,13 +35,19 @@
                 {
                     for (int i = 0; i < rep.Users.Count; i++)
                     {
-                        user = rep.Users[i];
-                        Console.WriteLine(con.Read(user).ToString());
+                        User users = rep.Users[i];
+                        Console.WriteLine(con.Read(users).ToString());
                     }
                     continue;
                 }
 
+                
+                int id = menu.ChooseUserId();
+                User user = rep.FindId(id);
+
+
                 User editUser = new User(user);
+                Console.WriteLine(con.Read(user).ToString());
 
                 switch (change)
                 {
@@ -69,10 +75,20 @@
                         Console.WriteLine(con.Read(user).ToString);
                         break;
                     case 7:
-                        User newUser = new(rep.NewUserId(), correct.ChangeFirstName(), correct.ChangeLastName(), correct.ChangePatronymic(), correct.ChangePassport(), correct.ChangePassport());
+                        User newUser = correct.AddNewUser();
+                        rep.NewUserId(newUser);
 
-                       
-                            
+                        var userCreator = con as IUserCreator;
+
+                        if (userCreator == null)
+                        {
+                            Console.WriteLine("Нет прав на создание");
+                            break;
+                        }
+
+                        var createResult = userCreator.TryCreateUser(user);
+
+                        rep.SaveNewUser(newUser);
                         break;
                 }
 

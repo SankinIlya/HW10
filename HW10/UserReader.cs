@@ -45,7 +45,8 @@ namespace HW10
 
         public User AddNewUser()
         {
-            new User()
+            User user = new(1, ChangeLastName(), ChangeFirstName(), ChangePatronymic(), ChangePhone(), ChangePassport());
+            return user;
         }
     }
 }

@@ -142,9 +142,19 @@ namespace HW10
             return string.Join(Separator, history.WhoEdit, history.WhatEdit, history.TimeEdit);
         }
 
-        public int NewUserId()
+        public User NewUserId(User user)
         {
-            return users.Count + 1;        
+            user.Id = users.Count + 1;
+            return user;
+        }
+
+        public void SaveNewUser(User user)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                users.Add(user);
+                sw.WriteLine(PrintToSave(user));
+            }
         }
     }
 }
